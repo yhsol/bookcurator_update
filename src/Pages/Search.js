@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = () => {
+const Search = term => {
   return <div>Search</div>;
 };
 

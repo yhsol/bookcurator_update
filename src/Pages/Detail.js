@@ -1,6 +1,6 @@
 import React from "react";
 
-const Detail = () => {
+const Detail = id => {
   return <div>Detail</div>;
 };
 
