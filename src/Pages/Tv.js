@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { tvApi } from "../Api";
+import Section from "../Components/Section";
 
 const Movie = () => {
   const [popular, setPopular] = useState(null);
@@ -15,7 +16,7 @@ const Movie = () => {
           data: { results: popular }
         } = await tvApi.popular();
         setPopular(popular);
-        console.log(popular);
+        // console.log(popular);
       }
       popularData();
 
@@ -24,7 +25,7 @@ const Movie = () => {
           data: { results: airingToday }
         } = await tvApi.airingToday();
         setAiringToday(airingToday);
-        console.log(airingToday);
+        // console.log(airingToday);
       };
       airingTodayData();
 
@@ -33,11 +34,11 @@ const Movie = () => {
           data: { results: topRated }
         } = await tvApi.topRated();
         setTopRated(topRated);
-        console.log(topRated);
+        // console.log(topRated);
       };
       topRatedData();
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       setError("Can't find infomation!");
     } finally {
       setLoading(false);
@@ -49,7 +50,7 @@ const Movie = () => {
       {loading ? (
         "Loading..."
       ) : (
-        <>
+        <Section>
           <h2>POPULAR</h2>
           <div>
             {popular &&
@@ -69,7 +70,7 @@ const Movie = () => {
               topRated.map(tv => <div key={tv.id}>{tv.name}</div>)}
           </div>
           <div>{error && error}</div>
-        </>
+        </Section>
       )}
     </>
   );

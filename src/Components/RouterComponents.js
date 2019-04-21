@@ -1,23 +1,30 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Main from "../Pages/Main";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import Movie from "../Pages/Movie";
 import Tv from "../Pages/Tv";
 import Search from "../Pages/Search";
 import Detail from "../Pages/Detail";
 import Header from "./Header";
+import Main from "../Pages/Main";
 
-const RouterComponents = () => {
-  return (
-    <Router>
+export default () => (
+  <Router>
+    <>
       <Header />
-      <Route path="/" exact component={Main} />
-      <Route path="/movie" component={Movie} />
-      <Route path="/tv" component={Tv} />
-      <Route path="/search" component={Search} />
-      <Route path="/detail/:id" component={Detail} />
-    </Router>
-  );
-};
-
-export default RouterComponents;
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/movie" exact component={Movie} />
+        <Route path="/tv" exact component={Tv} />
+        <Route path="/search" component={Search} />
+        <Route path="/movie/:id" component={Detail} />
+        <Route path="/tv/:id" component={Detail} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </>
+  </Router>
+);

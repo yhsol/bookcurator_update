@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { movieApi } from "../Api";
+import Section from "../Components/Section";
 
 const Movie = () => {
   const [popular, setPopular] = useState(null);
@@ -15,7 +16,7 @@ const Movie = () => {
           data: { results: popular }
         } = await movieApi.popular();
         setPopular(popular);
-        console.log(popular);
+        // console.log(popular);
       }
       popularData();
 
@@ -24,7 +25,7 @@ const Movie = () => {
           data: { results: upcoming }
         } = await movieApi.upcoming();
         setUpcoming(upcoming);
-        console.log(upcoming);
+        // console.log(upcoming);
       };
       upcomingData();
 
@@ -33,7 +34,7 @@ const Movie = () => {
           data: { results: nowPlaying }
         } = await movieApi.nowPlaying();
         setNowPlaying(nowPlaying);
-        console.log(nowPlaying);
+        // console.log(nowPlaying);
       };
       nowPlayingData();
     } catch (error) {
@@ -49,7 +50,7 @@ const Movie = () => {
       {loading ? (
         "Loading..."
       ) : (
-        <>
+        <Section>
           <h2>POPULAR</h2>
           <div>
             {popular &&
@@ -69,7 +70,7 @@ const Movie = () => {
               upcoming.map(movie => <div key={movie.id}>{movie.title}</div>)}
           </div>
           <div>{error && error}</div>
-        </>
+        </Section>
       )}
     </>
   );
