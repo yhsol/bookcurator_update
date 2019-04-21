@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { movieApi } from "../Api";
 import Section from "../Components/Section";
 
@@ -55,19 +56,31 @@ const Movie = () => {
           <div>
             {popular &&
               popular.length > 0 &&
-              popular.map(movie => <div key={movie.id}>{movie.title}</div>)}
+              popular.map(movie => (
+                <div key={movie.id}>
+                  <Link to={`movie/${movie.id}`}>{movie.title}</Link>
+                </div>
+              ))}
           </div>
           <h2>NOW PLAYING</h2>
           <div>
             {nowPlaying &&
               nowPlaying.length > 0 &&
-              nowPlaying.map(movie => <div key={movie.id}>{movie.title}</div>)}
+              nowPlaying.map(movie => (
+                <div key={movie.id}>
+                  <Link to={`movie/${movie.id}`}>{movie.title}</Link>
+                </div>
+              ))}
           </div>
           <h2>UPCOMING</h2>
           <div>
             {upcoming &&
               upcoming.length > 0 &&
-              upcoming.map(movie => <div key={movie.id}>{movie.title}</div>)}
+              upcoming.map(movie => (
+                <div key={movie.id}>
+                  <Link to={`movie/${movie.id}`}>{movie.title}</Link>
+                </div>
+              ))}
           </div>
           <div>{error && error}</div>
         </Section>

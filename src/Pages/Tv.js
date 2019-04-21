@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { tvApi } from "../Api";
 import Section from "../Components/Section";
+import { Link } from "react-router-dom";
 
 const Movie = () => {
   const [popular, setPopular] = useState(null);
@@ -55,19 +56,31 @@ const Movie = () => {
           <div>
             {popular &&
               popular.length > 0 &&
-              popular.map(tv => <div key={tv.id}>{tv.name}</div>)}
+              popular.map(tv => (
+                <div key={tv.id}>
+                  <Link to={`tv/${tv.id}`}>{tv.name}</Link>
+                </div>
+              ))}
           </div>
           <h2>NOW PLAYING</h2>
           <div>
             {airingToday &&
               airingToday.length > 0 &&
-              airingToday.map(tv => <div key={tv.id}>{tv.name}</div>)}
+              airingToday.map(tv => (
+                <div key={tv.id}>
+                  <Link to={`tv/${tv.id}`}>{tv.name}</Link>
+                </div>
+              ))}
           </div>
           <h2>UPCOMING</h2>
           <div>
             {topRated &&
               topRated.length > 0 &&
-              topRated.map(tv => <div key={tv.id}>{tv.name}</div>)}
+              topRated.map(tv => (
+                <div key={tv.id}>
+                  <Link to={`tv/${tv.id}`}>{tv.name}</Link>
+                </div>
+              ))}
           </div>
           <div>{error && error}</div>
         </Section>

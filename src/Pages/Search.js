@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { movieApi, tvApi } from "../Api";
 import Section from "../Components/Section";
+import { Link } from "react-router-dom";
 
 const Search = term => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -72,14 +73,18 @@ const Search = term => {
             {movieResults && movieResults.length > 0 && (
               <div>
                 {movieResults.map(movie => (
-                  <div key={movie.id}>{movie.title}</div>
+                  <div key={movie.id}>
+                    <Link to={`movie/${movie.id}`}>{movie.title}</Link>
+                  </div>
                 ))}
               </div>
             )}
             {tvResults && tvResults.length > 0 && (
               <div>
                 {tvResults.map(tvShow => (
-                  <div key={tvShow.id}>{tvShow.title}</div>
+                  <div key={tvShow.id}>
+                    <Link to={`tv/${tvShow.id}`}>{tvShow.title}</Link>
+                  </div>
                 ))}
               </div>
             )}
