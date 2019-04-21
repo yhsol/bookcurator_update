@@ -2,6 +2,7 @@ import React from "react";
 import Movie from "./Movie";
 import Tv from "./Tv";
 import styled from "styled-components";
+import Section from "../Components/Section";
 
 const MainTitle = styled.div`
   font-size: 1.4rem;
@@ -10,12 +11,12 @@ const MainTitle = styled.div`
 
 const Main = () => {
   return (
-    <>
+    <Section>
       <MainTitle>Movie</MainTitle>
       <Movie />
       <MainTitle>Tv</MainTitle>
       <Tv />
-    </>
+    </Section>
   );
 };
 
